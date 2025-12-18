@@ -1,0 +1,7 @@
+{
+  "name": "Stellar Explorer – Space & Astronomy Dashboard",
+  "description": "A high-performance astronomy platform featuring NASA APOD, Mars Rover imagery, live ISS tracking, and an AI-powered cosmic assistant using Gemini.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
