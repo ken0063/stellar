@@ -9,7 +9,9 @@ const IssTracker = dynamic(
 	{ ssr: false }
 );
 
+
 export default function IssPage() {
+
 	return (
 		<PageLayout>
 			<section className="pt-20 pb-32">
@@ -60,18 +62,73 @@ export default function IssPage() {
 						</ul>
 					</div>
 					
-					<div className="p-10 bg-blue-600/3 backdrop-blur-xl rounded-[2.5rem] border border-blue-500/20 space-y-6 group">
+					{/* <div className="p-10 bg-blue-600/3 backdrop-blur-xl rounded-[2.5rem] border border-blue-500/20 space-y-6 group">
 						<div className="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-400 border border-blue-500/20 group-hover:scale-110 transition-transform duration-500">
 							📡
 						</div>
 						<h3 className="text-2xl font-black uppercase italic tracking-tight">Station Visibility</h3>
-						<p className="text-sm text-white/40 leading-relaxed">
-							The ISS is often visible to the naked eye as a bright, fast-moving point of light.
-						</p>
-						<button className="text-[10px] font-black uppercase tracking-widest text-blue-400 hover:text-blue-300 transition-colors">
-							Check Visibility Near Me →
-						</button>
-					</div>
+						
+						{!userLocation && !error && (
+							<p className="text-sm text-white/40 leading-relaxed">
+								Locating you to calculate upcoming passes...
+							</p>
+						)}
+
+						{error && (
+							<div className="space-y-2">
+								<p className="text-sm text-red-400 leading-relaxed">
+									{error}
+								</p>
+								<p className="text-xs text-white/40">
+									Please enable location services to see when the ISS will fly over you.
+								</p>
+							</div>
+						)}
+
+						{isLoadingPasses && userLocation && (
+							<p className="text-sm text-white/40 leading-relaxed animate-pulse">
+								Calculating orbital mechanics...
+							</p>
+						)}
+
+						{!isLoadingPasses && passes.length > 0 && (
+							<div className="space-y-4">
+								<p className="text-sm text-white/40">
+									Upcoming visible passes near you:
+								</p>
+								<div className="space-y-3">
+									{passes.slice(0, 3).map((pass, i) => (
+										<div key={i} className="flex justify-between items-center border-b border-white/5 pb-2 last:border-0 hover:bg-white/5 p-2 rounded-lg transition-colors">
+											<div className="flex flex-col">
+												<span className="font-bold text-white text-sm">
+													{pass.rise.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' })}
+												</span>
+												<span className="text-xs text-blue-400 font-mono">
+													{pass.rise.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' })}
+												</span>
+											</div>
+											<div className="text-right">
+												<div className="flex items-center gap-2 justify-end">
+													<span className="text-[10px] uppercase tracking-wider text-white/30">Dur</span>
+													<span className="font-mono text-xs">{Math.round(pass.duration)}m</span>
+												</div>
+												<div className="flex items-center gap-2 justify-end">
+													<span className="text-[10px] uppercase tracking-wider text-white/30">Max El</span>
+													<span className="font-mono text-xs text-yellow-400/80">{Math.round(pass.maxElevation)}°</span>
+												</div>
+											</div>
+										</div>
+									))}
+								</div>
+							</div>
+						)}
+
+						{!isLoadingPasses && userLocation && passes.length === 0 && (
+							<p className="text-sm text-white/40 leading-relaxed">
+								No visible passes detected in the next 24 hours. The ISS might be passing during the day or the angle is too low.
+							</p>
+						)}
+					</div> */}
 				</div>
 			</section>
 		</PageLayout>

@@ -4,7 +4,6 @@ import { Suspense, use } from "react";
 import dynamic from "next/dynamic";
 import { nasaService } from "@/infrastructure/api/nasa-service";
 import { ApodHero } from "@/components/shared/ApodHero";
-import { DateSearch } from "@/components/shared/DateSearch";
 import { PageLayout } from "@/components/shared/PageLayout";
 import { Star } from "lucide-react";
 import type { ApodData } from "@/domain/models/space-data";
@@ -48,9 +47,9 @@ export default function ApodPage({
 							Explore the universe through a new cosmic wonder captured by NASA&apos;s telescopes every single day.
 						</p>
 					</div>
-					<div className="w-full md:w-auto pb-2">
+					{/* <div className="w-full md:w-auto pb-2">
 						<DateSearch />
-					</div>
+					</div> */}
 				</div>
 			</section>
 

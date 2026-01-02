@@ -75,6 +75,13 @@ export interface IssPosition {
 	name_id?: string;
 }
 
+export interface IssTle {
+	name: string;
+	id: number;
+	line1: string;
+	line2: string;
+}
+
 export interface FavoriteItem {
 	type: string;
 	id: string;

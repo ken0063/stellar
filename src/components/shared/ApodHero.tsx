@@ -46,7 +46,7 @@ export function ApodHero({ data }: ApodHeroProps) {
 			</div>
 
 			<div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 sm:p-8 md:p-16">
-				<div className="max-w-4xl space-y-4">
+				<div className="max-w-4xl p-8 rounded-3xl bg-black/40 backdrop-blur-md border border-white/10 space-y-4">
 					<div className="inline-block px-3 py-1 bg-white/10 backdrop-blur-md rounded-full border border-white/20 text-[10px] sm:text-xs font-semibold uppercase tracking-wider text-white">
 						Astronomy Picture of the Day
 					</div>

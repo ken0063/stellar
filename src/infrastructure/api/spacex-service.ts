@@ -9,19 +9,20 @@ const SPACEX_BASE_URL = "https://api.spacexdata.com/v4";
 export class SpaceXService implements ILaunchService {
 	constructor(private client: ApiClient = apiClient) {}
 
-	async getLaunches(limit = 10): Promise<SpaceXLaunch[]> {
-		const data = await this.client.post<{ docs: SpaceXLaunch[] }>(
+	async getLaunches(limit = 10, page = 1): Promise<{ docs: SpaceXLaunch[]; hasNextPage: boolean; nextPage: number | null }> {
+		const data = await this.client.post<{ docs: SpaceXLaunch[]; hasNextPage: boolean; nextPage: number | null }>(
 			`${SPACEX_BASE_URL}/launches/query`,
 			{
 				query: {},
 				options: {
 					limit,
+					page,
 					sort: { date_utc: "desc" },
 				},
 			},
 			{ revalidate: 3600 }
 		);
-		return data.docs;
+		return data;
 	}
 }
 

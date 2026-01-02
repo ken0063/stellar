@@ -34,6 +34,14 @@ const nextConfig: NextConfig = {
 				protocol: "https",
 				hostname: "farm*.staticflickr.com",
 			},
+			{
+				protocol: "https",
+				hostname: "images2.imgbox.com",
+			},
+			{
+				protocol: "https",
+				hostname: "img.youtube.com",
+			},
 		],
 	},
 };

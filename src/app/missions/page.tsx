@@ -3,8 +3,13 @@
 import { MissionExplorer } from "@/components/shared/MissionExplorer";
 import { PageLayout } from "@/components/shared/PageLayout";
 import { Star } from "lucide-react";
+import { useSpaceXLaunches } from "@/hooks/use-space-data";
+import Image from "next/image";
 
 export default function MissionsPage() {
+	const { data: launches } = useSpaceXLaunches(1);
+	const latestLaunch = launches?.[0];
+
 	return (
 		<PageLayout>
 			<section className="pt-20 pb-32">
@@ -40,11 +45,26 @@ export default function MissionsPage() {
 					</div>
 					
 					<div className="relative aspect-video rounded-4xl overflow-hidden bg-white/5 border border-white/10 group backdrop-blur-sm">
-						<div className="absolute inset-0 flex items-center justify-center">
-							<div className="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-md group-hover:scale-110 transition-transform border border-white/10">
+						{latestLaunch?.links.youtube_id && (
+							<div className="absolute inset-0">
+								<Image 
+									src={`https://img.youtube.com/vi/${latestLaunch.links.youtube_id}/maxresdefault.jpg`}
+									alt="Latest Mission"
+									fill
+									className="object-cover opacity-60 group-hover:opacity-80 transition-opacity"
+								/>
+							</div>
+						)}
+						<a 
+							href={latestLaunch?.links.webcast || (latestLaunch?.links.youtube_id ? `https://www.youtube.com/watch?v=${latestLaunch.links.youtube_id}` : "#")}
+							target="_blank"
+							rel="noopener noreferrer" 
+							className={`absolute inset-0 flex items-center justify-center ${(!latestLaunch?.links.webcast && !latestLaunch?.links.youtube_id) ? 'pointer-events-none opacity-50' : ''}`}
+						>
+							<div className="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-md group-hover:scale-110 transition-transform border border-white/10 cursor-pointer">
 								<div className="w-0 h-0 border-t-12 border-t-transparent border-l-18 border-l-white border-b-12 border-b-transparent ml-1" />
 							</div>
-						</div>
+						</a>
 						<div className="absolute bottom-8 left-8 text-[10px] font-black uppercase tracking-widest text-white/40">Watch Latest Mission Recap</div>
 					</div>
 				</div>

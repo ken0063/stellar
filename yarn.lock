@@ -7850,6 +7850,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"satellite.js@npm:^6.0.1":
+  version: 6.0.1
+  resolution: "satellite.js@npm:6.0.1"
+  checksum: 10c0/e85c416f4ad053850fa4c8c70eb72c9d90396b154532ac3902691b6b9cb848248dd59794cf249cad138448cdb8aa6e81b94dfcef4f5fcfe1aafba928575724db
+  languageName: node
+  linkType: hard
+
 "scheduler@npm:^0.27.0":
   version: 0.27.0
   resolution: "scheduler@npm:0.27.0"
@@ -8233,6 +8240,7 @@ __metadata:
     next: "npm:16.0.10"
     react: "npm:19.2.1"
     react-dom: "npm:19.2.1"
+    satellite.js: "npm:^6.0.1"
     tailwindcss: "npm:^4"
     three: "npm:^0.182.0"
     ts-jest: "npm:^29.4.6"

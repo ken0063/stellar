@@ -28,8 +28,8 @@ export default function IssTracker() {
             // // This is a simplified version for demonstration
 			svg.append("path")
 				.attr("d", path({ type: "Sphere" }))
-				.attr("fill", "#0a0a0a")
-				.attr("stroke", "#ffffff20");
+				.attr("fill", "rgba(255, 255, 255, 0.03)")
+				.attr("stroke", "rgba(255, 255, 255, 0.1)");
 
 			// ISS Marker
 			const [x, y] = projection([parseFloat(location.longitude), parseFloat(location.latitude)]) || [0, 0];
@@ -57,7 +57,13 @@ export default function IssTracker() {
 
 	return (
 		<div className="space-y-6">
-			<div className="bg-white/5 p-8 rounded-3xl border border-white/10 overflow-hidden">
+			<div className="relative bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-slate-900 via-[#0B0B15] to-[#05050A] p-8 rounded-3xl border border-white/10 overflow-hidden shadow-2xl">
+				{/* Star field effect */}
+				<div className="absolute inset-0 opacity-30" style={{ 
+					backgroundImage: 'radial-gradient(white 1px, transparent 1px)', 
+					backgroundSize: '50px 50px' 
+				}} />
+
 				<svg
 					ref={svgRef}
 					viewBox="0 0 800 450"

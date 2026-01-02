@@ -9,7 +9,10 @@ const ROVERS = ["curiosity", "opportunity", "spirit"];
 export function MarsRoverExplorer() {
 	const filters = useMarsFilterStore((state) => state.filters);
 	const setFilters = useMarsFilterStore((state) => state.setFilters);
-	const { data: photos, isLoading, error } = useMarsPhotos(filters.rover, filters.sol, filters.camera);
+	const { data: photos, isLoading, error } = useMarsPhotos(filters.rover, { 
+		sol: filters.sol, 
+		camera: filters.camera 
+	});
 
 	return (
 		<div className="space-y-8">
