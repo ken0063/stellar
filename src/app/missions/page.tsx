@@ -8,7 +8,14 @@ import Image from "next/image";
 
 export default function MissionsPage() {
 	const { data: launches } = useSpaceXLaunches(1);
-	const latestLaunch = launches?.[0];
+	// TEMP: Inject test video ID for verification
+	const latestLaunch = launches?.[0] ? {
+		...launches[0],
+		links: {
+			...launches[0].links,
+			youtube_id: launches[0].links.youtube_id || "921VbIMAi98" // Falcon Heavy Test Flight
+		}
+	} : undefined;
 
 	return (
 		<PageLayout>
@@ -44,7 +51,7 @@ export default function MissionsPage() {
 						</div>
 					</div>
 					
-					<div className="relative aspect-video rounded-4xl overflow-hidden bg-white/5 border border-white/10 group backdrop-blur-sm">
+					{/* <div className="relative aspect-video rounded-4xl overflow-hidden bg-white/5 border border-white/10 group backdrop-blur-sm">
 						{latestLaunch?.links.youtube_id && (
 							<div className="absolute inset-0">
 								<Image 
@@ -66,7 +73,7 @@ export default function MissionsPage() {
 							</div>
 						</a>
 						<div className="absolute bottom-8 left-8 text-[10px] font-black uppercase tracking-widest text-white/40">Watch Latest Mission Recap</div>
-					</div>
+					</div> */}
 				</div>
 			</section>
 
