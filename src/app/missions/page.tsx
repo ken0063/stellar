@@ -3,19 +3,19 @@
 import { MissionExplorer } from "@/components/shared/MissionExplorer";
 import { PageLayout } from "@/components/shared/PageLayout";
 import { Star } from "lucide-react";
-import { useSpaceXLaunches } from "@/hooks/use-space-data";
-import Image from "next/image";
+// import { useSpaceXLaunches } from "@/hooks/use-space-data";
+// import Image from "next/image";
 
 export default function MissionsPage() {
-	const { data: launches } = useSpaceXLaunches(1);
+	// const { data: launches } = useSpaceXLaunches(1);
 	// TEMP: Inject test video ID for verification
-	const latestLaunch = launches?.[0] ? {
-		...launches[0],
-		links: {
-			...launches[0].links,
-			youtube_id: launches[0].links.youtube_id || "921VbIMAi98" // Falcon Heavy Test Flight
-		}
-	} : undefined;
+	// const latestLaunch = launches?.[0] ? {
+	// 	...launches[0],
+	// 	links: {
+	// 		...launches[0].links,
+	// 		youtube_id: launches[0].links.youtube_id || "921VbIMAi98" // Falcon Heavy Test Flight
+	// 	}
+	// } : undefined;
 
 	return (
 		<PageLayout>
